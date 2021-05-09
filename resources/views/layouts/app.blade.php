@@ -47,6 +47,10 @@
                  <a class="navbar-brand" href="{{ url('/courses') }}">
                    {{ config('Cursos', 'Cursos') }}
                </a>
+               <a class="navbar-brand" href="{{ url('/user') }}">
+                {{ config('Usuarios', 'Usuarios') }}
+            </a>
+
                 <?php
                }
                ?>
