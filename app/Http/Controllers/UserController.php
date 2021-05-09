@@ -18,8 +18,8 @@ class UserController extends Controller
         return view('user.index', compact('users'));
     }
 
-    public function edit(){
-
+    public function edit(User $user){
+        return view('user.edit',compact('user'));
 
     }
 
