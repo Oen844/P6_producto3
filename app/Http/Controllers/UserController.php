@@ -26,4 +26,16 @@ class UserController extends Controller
     public function update(){
 
     }
+
+    public function show(User $user){
+
+        return view('user.show',['user' => $user]);
+    }
+
+    public function destroy(User $user){
+        $user->delete();
+
+        return redirect()->route('user.index');
+
+    }
 }

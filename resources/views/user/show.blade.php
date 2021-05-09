@@ -1,21 +1,20 @@
 @extends('layouts.app')
 
-@section('title', $course->name)
+@section('title', $user->name)
 
 
 @section('content')
-    <h1>Bienvenido al curso: {{$course->name}} </h1>
-    <a href="{{route('courses.index')}}">Volver a cursos</a>
+    <h1>Bienvenido al usuario: {{$user->name}} </h1>
+    <a href="{{route('user.index')}}">Volver a Ususarios</a>
     <br>
-    <a href="{{route('courses.edit',$course)}}">Editar curso</a>
+    <a href="{{route('user.edit',$user)}}">Editar curso</a>
 
-    <p><strong>Categoria: </strong>{{$course->name}}</p>
-    <p><Strong>Descripcion: </Strong>{{$course->description}}</p>
-    <p><Strong>Fecha de Inicio: </Strong>{{$course->date_start}}</p>
-    <p><Strong>Fecha de Fin: </Strong>{{$course->date_end}}</p>
-    <p><Strong>Activo: </Strong>{{$course->active}}</p>
+    <p><strong>Categoria: </strong>{{$user->name}}</p>
+    <p><Strong>Email: </Strong>{{$user->email}}</p>
 
-    <form action="{{route('courses.destroy',$course)}}" method="POST">
+    <p><Strong>Tipo: </Strong>{{$user->tipo}}</p>
+
+    <form action="{{route('user.destroy',$user)}}" method="POST">
         @csrf
         @method('delete')
         <button type="submit">Eliminar</button>

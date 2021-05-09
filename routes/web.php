@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CoursesController;
-use App\Http\Controllers\ProfileController;
+
 use App\Http\Controllers\UserController;
 
 /*
@@ -28,6 +28,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //controlador de todo lo referente a cursos
 Route::resource('courses', CoursesController::class);
 
+//controlador de los usuarios
 Route::resource('user', UserController::class);
 
 
