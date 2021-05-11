@@ -44,12 +44,18 @@
                  @auth
                  <?php
                  if (Auth::user()->tipo== 1) { ?>
-                 <a class="navbar-brand" href="{{ url('/courses') }}">
-                   {{ config('Cursos', 'Cursos') }}
-               </a>
-               <a class="navbar-brand" href="{{ url('/user') }}">
-                {{ config('Usuarios', 'Usuarios') }}
-            </a>
+                    <a class="navbar-brand" href="{{ url('/courses') }}">
+                        {{ config('Cursos', 'Cursos') }}
+                    </a>
+                    <a class="navbar-brand" href="{{ url('/user') }}">
+                        {{ config('Usuarios', 'Usuarios') }}
+                    </a>
+                    <a class="navbar-brand" href="{{ url('/asignaturas') }}">
+                        {{ config('Asignaturas', 'Asignaturas') }}
+                    </a>
+                    <a class="navbar-brand" href="{{ url('/schedules') }}">
+                        {{ config('Clases', 'Clases') }}
+                    </a>
 
                 <?php
                }
