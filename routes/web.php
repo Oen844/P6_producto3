@@ -34,4 +34,6 @@ Route::resource('user', UserController::class);
 
 Route::resource('asignaturas', App\Http\Controllers\AsignaturaController::class);
 
+Route::resource('schedules', App\Http\Controllers\ScheduleController::class);
+
 
