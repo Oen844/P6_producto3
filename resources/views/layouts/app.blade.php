@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title> @yield('title') </title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -44,12 +44,18 @@
                  @auth
                  <?php
                  if (Auth::user()->tipo== 1) { ?>
-                 <a class="navbar-brand" href="{{ url('/courses') }}">
-                   {{ config('Cursos', 'Cursos') }}
-               </a>
-               <a class="navbar-brand" href="{{ url('/user') }}">
-                {{ config('Usuarios', 'Usuarios') }}
-            </a>
+                    <a class="navbar-brand" href="{{ url('/courses') }}">
+                        {{ config('Cursos', 'Cursos') }}
+                    </a>
+                    <a class="navbar-brand" href="{{ url('/user') }}">
+                        {{ config('Usuarios', 'Usuarios') }}
+                    </a>
+                    <a class="navbar-brand" href="{{ url('/asignaturas') }}">
+                        {{ config('Asignaturas', 'Asignaturas') }}
+                    </a>
+                    <a class="navbar-brand" href="{{ url('/schedules') }}">
+                        {{ config('Clases', 'Clases') }}
+                    </a>
 
                 <?php
                }
@@ -87,6 +93,12 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                        {{-- link al perfil del usuario --}}
+                                    <a class="dropdown-item" href="{{route('user.edit',Auth::user()->id)}}">
+
+                                        Mi perfil
+                                    </a>
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
