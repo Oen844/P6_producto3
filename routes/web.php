@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AsignaturaController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CoursesController;
@@ -30,5 +31,7 @@ Route::resource('courses', CoursesController::class);
 
 //controlador de los usuarios
 Route::resource('user', UserController::class);
+
+Route::resource('asignaturas', App\Http\Controllers\AsignaturaController::class);
 
 
