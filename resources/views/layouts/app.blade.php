@@ -89,7 +89,13 @@
                         @else
 
                         <a href="{{ route('mensaje') }}" class="nav-link dropdown">Enviar mensaje</a>
-                        <a href="#" class="nav-link dropdown">Notificaciones <span class="bange"> <strong>1</strong> </span></a>
+                        <a href="#" class="nav-link dropdown">Notificaciones
+                            @if ($count =Auth::user()->notifications->count())
+                            <span class="bange"> <strong>{{$count}}</strong> </span>
+                            @endif
+                        </a>
+
+
 
                             <li class="nav-item dropdown">
 

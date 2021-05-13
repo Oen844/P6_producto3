@@ -11,6 +11,8 @@ use Illuminate\Notifications\Notification;
 
 class MessageSent extends Notification
 {
+    protected $message;
+    
     use Queueable;
 
     /**

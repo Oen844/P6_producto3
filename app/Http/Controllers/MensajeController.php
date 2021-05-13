@@ -40,29 +40,29 @@ class MensajeController extends Controller
         //return view('mensaje.create');
     }
     public function store(Request $request){
-        // $this->validate($request, [
-        //     'body' => 'required',
-        //     'recipient_id' => 'required|exists:users,id'
-        // ]);
+         $this->validate($request, [
+             'body' => 'required',
+             'recipient_id' => 'required|exists:users,id'
+         ]);
 
         $user = Auth::user()->id;
         $message = Message::create([
             'sender_id' => $user,
-            'recipient_id' => $request->user_id,
+            'recipient_id' => $request->recipient_id,
             'body' => $request->body,
 
         ]);
 
 
 
-        //     $recipient = User::find($request->user_id);
-        //     $recipient ->notify(new MessageSent($message));
+            $recipient = User::find($request->recipient_id);
+            $recipient ->notify(new MessageSent($message));
 
 
 
          return back()->with('flash','Tu mensaje ha sido enviado');
 
-        //return $request;
+
     }
 
 

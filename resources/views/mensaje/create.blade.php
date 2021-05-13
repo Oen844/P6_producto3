@@ -13,13 +13,13 @@
 
                 <div class="card-body">
                     <div class="from-group">
-                        <select name="user_id"  class="form-control">
+                        <select name="recipient_id"  class="form-control">
                             <option value="">Seleciona el usuario</option>
                             @foreach ($users as $user)
                                 <option value="{{$user->id}}">{{$user->name}}</option>
                             @endforeach
                         </select>
-                        @error('user_id')
+                        @error('recipient_id')
                         *{{$message}}
                         @enderror
 
