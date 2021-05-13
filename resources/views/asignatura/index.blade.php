@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Indice de asiganturas')
+
 @section('template_title')
     Asignatura
 @endsection
@@ -35,7 +37,7 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
+
 										<th>Id Teacher</th>
 										<th>Id Course</th>
 										<th>Id Shedule</th>
@@ -49,7 +51,7 @@
                                     @foreach ($asignaturas as $asignatura)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            
+
 											<td>{{ $asignatura->id_teacher }}</td>
 											<td>{{ $asignatura->id_course }}</td>
 											<td>{{ $asignatura->id_shedule }}</td>

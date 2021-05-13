@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'Clases')
 
 @section('template_title')
     Schedule
@@ -35,7 +36,7 @@
                                 <thead class="thead">
                                     <tr>
                                         <th>No</th>
-                                        
+
 										<th>Id Class</th>
 										<th>Time Start</th>
 										<th>Time End</th>
@@ -48,7 +49,7 @@
                                     @foreach ($schedules as $schedule)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            
+
 											<td>{{ $schedule->id_class }}</td>
 											<td>{{ $schedule->time_start }}</td>
 											<td>{{ $schedule->time_end }}</td>

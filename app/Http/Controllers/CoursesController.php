@@ -9,6 +9,16 @@ use App\Http\Requests\StoreCourses;
 
 class CoursesController extends Controller
 {
+      /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(){
         $courses = Courses::orderBy('id','desc')->paginate();
 

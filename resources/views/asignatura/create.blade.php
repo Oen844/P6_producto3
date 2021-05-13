@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Crea una asignatura')
+
 @section('template_title')
     Create Asignatura
 @endsection

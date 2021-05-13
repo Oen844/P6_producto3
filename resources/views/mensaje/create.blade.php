@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'Manda un mensaje')
 
 @section('content')
 <div class="container">

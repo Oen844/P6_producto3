@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'Edita una clase')
 
 @section('template_title')
     Update Schedule

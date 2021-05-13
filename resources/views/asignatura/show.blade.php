@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Muestra asignaturas')
+
 @section('template_title')
     {{ $asignatura->name ?? 'Show Asignatura' }}
 @endsection
@@ -19,7 +21,7 @@
                     </div>
 
                     <div class="card-body">
-                        
+
                         <div class="form-group">
                             <strong>Id Teacher:</strong>
                             {{ $asignatura->id_teacher }}

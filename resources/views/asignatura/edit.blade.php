@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', 'Edita una asignatura')
+
 @section('template_title')
     Update Asignatura
 @endsection
