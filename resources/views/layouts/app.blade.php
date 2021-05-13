@@ -87,7 +87,12 @@
                                 </li>
                             @endif
                         @else
+
+                        <a href="{{ route('mensaje') }}" class="nav-link dropdown">Enviar mensaje</a>
+                        <a href="#" class="nav-link dropdown">Notificaciones <span class="bange"> <strong>1</strong> </span></a>
+
                             <li class="nav-item dropdown">
+
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
@@ -95,7 +100,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                         {{-- link al perfil del usuario --}}
                                     <a class="dropdown-item" href="{{route('user.edit',Auth::user()->id)}}">
-
+                                                {{-- Link a editar el perfil autenticado --}}
                                         Mi perfil
                                     </a>
 
