@@ -27,7 +27,8 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 //Controlador para mandar mensajes y notificaciones
-Route::get('/mesage/create', [App\Http\Controllers\MensajeController::class, 'index'])->name('mensaje');
+Route::get('/message/create', [App\Http\Controllers\MensajeController::class, 'index'])->name('mensaje');
+Route::post('messages', [App\Http\Controllers\MensajeController::class, 'store'])->name('messages.store');
 
 //controlador de todo lo referente a cursos
 Route::resource('courses', CoursesController::class);

@@ -120,6 +120,14 @@
                 </div>
             </div>
         </nav>
+        @if (session()->has('flash'))
+
+
+                <div class="container">
+
+                    <div class="alert alert-success">{{session('flash')}}</div>
+                </div>
+                @endif
 
         <main class="py-4">
             @yield('content')

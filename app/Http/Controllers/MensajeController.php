@@ -2,7 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Message;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+
+
+use App\Models\User;
+use App\Notifications\MessageSent;
 
 class MensajeController extends Controller
 {
@@ -23,8 +29,41 @@ class MensajeController extends Controller
      */
     public function index()
     {
-        return view('mensaje.create');
+        //$users = User::all();
+        $users = User::where('id','!=', auth()->id())->get();
+        $user = Auth::user()->tipo;
+        if(($user !== 2)){
+            return view('mensaje.create', compact('users'));
+        }else{
+            return view('home');
+        }
+        //return view('mensaje.create');
+    }
+    public function store(Request $request){
+        // $this->validate($request, [
+        //     'body' => 'required',
+        //     'recipient_id' => 'required|exists:users,id'
+        // ]);
+
+        $user = Auth::user()->id;
+        $message = Message::create([
+            'sender_id' => $user,
+            'recipient_id' => $request->user_id,
+            'body' => $request->body,
+
+        ]);
+
+
+
+        //     $recipient = User::find($request->user_id);
+        //     $recipient ->notify(new MessageSent($message));
+
+
+
+         return back()->with('flash','Tu mensaje ha sido enviado');
+
+        //return $request;
     }
 
-    
+
 }

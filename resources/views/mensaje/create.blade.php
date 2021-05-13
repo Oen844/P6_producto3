@@ -6,13 +6,38 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+
+                <div class="card-header">{{ __('Enviar mensaje') }}</div>
+                <form method="POST" action="{{route('messages.store')}}">
+                    @csrf
 
                 <div class="card-body">
+                    <div class="from-group">
+                        <select name="user_id"  class="form-control">
+                            <option value="">Seleciona el usuario</option>
+                            @foreach ($users as $user)
+                                <option value="{{$user->id}}">{{$user->name}}</option>
+                            @endforeach
+                        </select>
+                        @error('user_id')
+                        *{{$message}}
+                        @enderror
+
+                    </div>
+
+                    <div class="from-group" >
+                        <textarea name="body" class="form-control" placeholder="Escribe aquí tu mensaje"></textarea>
+                        @error('body')
+                        *{{$message}}
+                        @enderror
+                    </div>
+                    <div class="from-group">
+                        <button class="btn btn-primary btn-block">Enviar</button>
+                    </div>
 
 
-                    {{ __('Crear mensaje') }}
                 </div>
+            </form>
             </div>
         </div>
     </div>
