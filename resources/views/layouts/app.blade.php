@@ -59,6 +59,9 @@
                     <a class="navbar-brand" href="{{ url('/exams') }}">
                         {{ config('Examanes', 'Examenes') }}
                     </a>
+                    <a class="navbar-brand" href="{{ url('/works') }}">
+                        {{ config('Trabajos', 'Trabajos') }}
+                    </a>
 
                 <?php
                }

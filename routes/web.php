@@ -51,5 +51,8 @@ Route::resource('schedules', App\Http\Controllers\ScheduleController::class);
 //controlador de exams
 Route::resource('exams', App\Http\Controllers\ExamController::class);
 
+//controlador de works
+Route::resource('works', App\Http\Controllers\WorkController::class);
+
 
 
