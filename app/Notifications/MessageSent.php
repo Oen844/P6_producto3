@@ -45,10 +45,17 @@ class MessageSent extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
+                    ->greeting($notifiable->name.",")
+                    ->error()
                     ->subject('Mensaje recibido desde tu sitio web')
                     ->line('Has recibido un mensaje')
                     ->action('Click aquí para ver el mensaje', route('messages.show', $this->message->id))
                     ->line('Gracias por utilizar nuestra aplicación!');
+        // return (new MailMessage)->view(
+        //     'emails.notification',[
+        //     'msg'=> $this->message,
+        //     'user'=>  $notifiable
+        // ])->subject('Mensaje recibido desde la aplicacion de DAW');
     }
 
     /**
