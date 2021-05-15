@@ -48,4 +48,8 @@ Route::resource('asignaturas', App\Http\Controllers\AsignaturaController::class)
 //controlador de schedules
 Route::resource('schedules', App\Http\Controllers\ScheduleController::class);
 
+//controlador de exams
+Route::resource('exams', App\Http\Controllers\ExamController::class);
+
+
 
