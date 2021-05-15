@@ -54,5 +54,11 @@ Route::resource('exams', App\Http\Controllers\ExamController::class);
 //controlador de works
 Route::resource('works', App\Http\Controllers\WorkController::class);
 
+//controlador de enrollment
+Route::resource('enrollment', App\Http\Controllers\EnrollmentController::class);
+
+//controlador de percentage
+//Route::resource('percentage', App\Http\Controllers\PercentageController::class);
+
 
 
