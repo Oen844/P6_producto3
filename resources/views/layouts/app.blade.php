@@ -43,7 +43,7 @@
                  {{-- link a crear crusos solo para adminisstrador --}}
                  @auth
                  <?php
-                 if (Auth::user()->tipo== 1) { ?>
+                 if (Auth::user()->tip!= 1) { ?>
                     <a class="navbar-brand" href="{{ url('/courses') }}">
                         {{ config('Cursos', 'Cursos') }}
                     </a>
@@ -55,6 +55,12 @@
                     </a>
                     <a class="navbar-brand" href="{{ url('/schedules') }}">
                         {{ config('Clases', 'Clases') }}
+                    </a>
+                    <a class="navbar-brand" href="{{ url('/exams') }}">
+                        {{ config('Examanes', 'Examenes') }}
+                    </a>
+                    <a class="navbar-brand" href="{{ url('/works') }}">
+                        {{ config('Trabajos', 'Trabajos') }}
                     </a>
 
                 <?php
