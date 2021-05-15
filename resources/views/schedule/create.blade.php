@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', 'Crea una clase')
 @section('template_title')
     Create Schedule
 @endsection

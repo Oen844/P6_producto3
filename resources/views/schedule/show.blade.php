@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'Muestra la clase')
 
 @section('template_title')
     {{ $schedule->name ?? 'Show Schedule' }}
@@ -19,7 +20,7 @@
                     </div>
 
                     <div class="card-body">
-                        
+
                         <div class="form-group">
                             <strong>Id Class:</strong>
                             {{ $schedule->id_class }}

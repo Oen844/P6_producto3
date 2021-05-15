@@ -87,7 +87,18 @@
                                 </li>
                             @endif
                         @else
+
+                        <a href="{{ route('mensaje') }}" class="nav-link dropdown">Enviar mensaje</a>
+                        <a href="{{ route('notifications.index') }}" class="nav-link dropdown">Notificaciones
+                            @if ($count =Auth::user()->unreadNotifications->count())
+                            <span class="bange"> <strong>{{$count}}</strong> </span>
+                            @endif
+                        </a>
+
+
+
                             <li class="nav-item dropdown">
+
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
                                 </a>
@@ -95,7 +106,7 @@
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                         {{-- link al perfil del usuario --}}
                                     <a class="dropdown-item" href="{{route('user.edit',Auth::user()->id)}}">
-
+                                                {{-- Link a editar el perfil autenticado --}}
                                         Mi perfil
                                     </a>
 
@@ -115,6 +126,14 @@
                 </div>
             </div>
         </nav>
+        @if (session()->has('flash'))
+
+
+                <div class="container">
+
+                    <div class="alert alert-success">{{session('flash')}}</div>
+                </div>
+                @endif
 
         <main class="py-4">
             @yield('content')

@@ -10,7 +10,7 @@
                 <div class="card-body">
 
 
-                    {{ __('You are logged in!') }}
+                    {{ __('Home') }}
                 </div>
             </div>
         </div>

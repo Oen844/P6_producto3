@@ -26,14 +26,26 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
+//Controlador para mandar mensajes
+Route::get('/message/create', [App\Http\Controllers\MensajeController::class, 'index'])->name('mensaje');
+Route::post('messages', [App\Http\Controllers\MensajeController::class, 'store'])->name('messages.store');
+Route::get('messages/{id}', [App\Http\Controllers\MensajeController::class, 'show'])->name('messages.show');
+
+//Controlador de notificaciones
+Route::get('notifications', [App\Http\Controllers\NotificationsCoontroller::class, 'index'])->name('notifications.index');
+Route::patch('notifications/{id}', [App\Http\Controllers\NotificationsCoontroller::class, 'read'] )->name('notifications.read');
+Route::delete('notifications/{id}', [App\Http\Controllers\NotificationsCoontroller::class, 'destroy'] )->name('notifications.destroy');
+
 //controlador de todo lo referente a cursos
 Route::resource('courses', CoursesController::class);
 
 //controlador de los usuarios
 Route::resource('user', UserController::class);
 
+//controlador de asignaturas
 Route::resource('asignaturas', App\Http\Controllers\AsignaturaController::class);
 
+//controlador de schedules
 Route::resource('schedules', App\Http\Controllers\ScheduleController::class);
 
 
