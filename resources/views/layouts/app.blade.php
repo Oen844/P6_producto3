@@ -36,9 +36,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
+
 
                  {{-- link a crear crusos solo para adminisstrador --}}
                  @auth
@@ -61,6 +59,12 @@
                     </a>
                     <a class="navbar-brand" href="{{ url('/works') }}">
                         {{ config('Trabajos', 'Trabajos') }}
+                    </a>
+                    <a class="navbar-brand" href="{{ url('/enrollment') }}">
+                        {{ config('Inscripción', 'Inscripción') }}
+                    </a>
+                    <a class="navbar-brand" href="{{ url('/percentage') }}">
+                        {{ config('Porcentaje', 'Porcentaje') }}
                     </a>
 
                 <?php
