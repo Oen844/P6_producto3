@@ -41,7 +41,7 @@ class AsignaturaController extends Controller
             return view('asignatura.index', compact('asignaturas'))
             ->with('i', (request()->input('page', 1) - 1) * $asignaturas->perPage());
 
-            
+
         }
 
 
@@ -83,6 +83,7 @@ class AsignaturaController extends Controller
      */
     public function show($id)
     {
+
         $asignatura = Asignatura::find($id);
 
         return view('asignatura.show', compact('asignatura'));

@@ -15,9 +15,9 @@ class Asignaturas extends Migration
     {
         Schema::create('asignaturas', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('id_teacher');
-            $table->integer('id_course');
-            $table->integer('id_shedule');
+            $table->integer('id_teacher')->references('id')->on('users');
+            $table->integer('id_course')->references('id')->on('courses');
+            $table->integer('id_shedule')->references('id')->on('shedules');
             $table->string('name',255);
             $table->string('color',10);
             $table->timestamps();

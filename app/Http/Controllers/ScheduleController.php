@@ -4,11 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Schedule;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class ScheduleController
  * @package App\Http\Controllers
  */
+
+ //id_class es id de asignatura
 class ScheduleController extends Controller
 {
 
@@ -28,10 +32,30 @@ class ScheduleController extends Controller
      */
     public function index()
     {
-        $schedules = Schedule::paginate();
+        $id = Auth::user()->id;
+        $user = Auth::user()->tipo;
+        if($user == 1){
+            $schedules = Schedule::paginate();
 
-        return view('schedule.index', compact('schedules'))
-            ->with('i', (request()->input('page', 1) - 1) * $schedules->perPage());
+            return view('schedule.index', compact('schedules'))
+           ->with('i', (request()->input('page', 1) - 1) * $schedules->perPage());
+        }if($user == 3){
+
+
+            // $schedules= DB::SELECT('SELECT  schedules.* from schedules, asignaturas where asignaturas.id = schedules.id_class and asignaturas.id_teacher = $id ;');
+            $schedules = DB::table('schedules')
+                 ->join('asignaturas', function($join)
+                 {
+                        $join->on('schedules.id_class', '=', 'asignaturas.id')
+                             ->where('asignaturas.id_teacher', '=', Auth::user()->id);
+                    })
+                    ->paginate();
+
+                    return view('schedule.index', compact('schedules'))
+                    ->with('i', (request()->input('page', 1) - 1) * $schedules->perPage());
+        }
+
+        
     }
 
     /**
