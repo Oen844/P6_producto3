@@ -32,6 +32,7 @@ class MensajeController extends Controller
         //$users = User::all();
         $users = User::where('id','!=', auth()->id())->get();
         $user = Auth::user()->tipo;
+
         if(($user !== 2)){
             return view('mensaje.create', compact('users'));
         }else{

@@ -15,8 +15,8 @@ class Works extends Migration
     {
         Schema::create('works', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('id_class');
-            $table->integer('id_student');
+            $table->integer('id_class')->references('id')->on('asignaturas');
+            $table->integer('id_student')->references('id')->on('users');
             $table->string('name',255);
             $table->float('mark');
 

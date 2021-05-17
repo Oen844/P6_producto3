@@ -15,8 +15,8 @@ class Enrollments extends Migration
     {
         Schema::create('enrollments', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('id_student');
-            $table->integer('id_course');
+            $table->integer('id_student')->references('id')->on('users');
+            $table->integer('id_course')->references('id')->on('courses');
             $table->integer('status');
 
             $table->timestamps();

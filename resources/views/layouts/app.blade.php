@@ -41,7 +41,7 @@
                  {{-- link a crear crusos solo para adminisstrador --}}
                  @auth
                  <?php
-                 if (Auth::user()->tip!= 1) { ?>
+                 if (Auth::user()->tipo != 2) { ?>
                     <a class="navbar-brand" href="{{ url('/courses') }}">
                         {{ config('Cursos', 'Cursos') }}
                     </a>

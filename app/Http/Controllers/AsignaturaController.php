@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Asignatura;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 /**
  * Class AsignaturaController
  * @package App\Http\Controllers
@@ -27,10 +28,24 @@ class AsignaturaController extends Controller
      */
     public function index()
     {
-        $asignaturas = Asignatura::paginate();
-
-        return view('asignatura.index', compact('asignaturas'))
+        $id = Auth::user()->id;
+        $user = Auth::user()->tipo;
+        if($user == 1){
+            $asignaturas = Asignatura::paginate();
+            return view('asignatura.index', compact('asignaturas'))
             ->with('i', (request()->input('page', 1) - 1) * $asignaturas->perPage());
+        }
+        if($user == 3){
+            //los profesores ven solo sus asingnaturas
+            $asignaturas = Asignatura::where('id_teacher','=',$id)->paginate();
+            return view('asignatura.index', compact('asignaturas'))
+            ->with('i', (request()->input('page', 1) - 1) * $asignaturas->perPage());
+
+
+        }
+
+
+
     }
 
     /**
@@ -68,6 +83,7 @@ class AsignaturaController extends Controller
      */
     public function show($id)
     {
+
         $asignatura = Asignatura::find($id);
 
         return view('asignatura.show', compact('asignatura'));

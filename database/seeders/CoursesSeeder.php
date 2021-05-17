@@ -15,12 +15,12 @@ class CoursesSeeder extends Seeder
      */
     public function run()
     {
-        $Curso1=Courses::create([
-            'name' => 'Desarrollo web',
-            'description' => 'Desarrolla aplicaciones web facilmente',
-            'date_start' => '2021-10-11',
-            'date_end' => '2022-10-11',
-            'active' => '1',
+            $Curso1=Courses::create([
+                'name' => 'Desarrollo web',
+                'description' => 'Desarrolla aplicaciones web facilmente',
+                'date_start' => '2021-10-11',
+                'date_end' => '2022-10-11',
+                'active' => '1',
             ]);
 
             $Curso2=Courses::create([
@@ -29,7 +29,9 @@ class CoursesSeeder extends Seeder
                 'date_start' => '2021-10-11',
                 'date_end' => '2022-10-11',
                 'active' => '1',
-                ]);
+            ]);
+
+
     }
 }
 

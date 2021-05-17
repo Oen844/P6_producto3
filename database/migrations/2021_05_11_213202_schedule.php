@@ -15,7 +15,7 @@ class Schedule extends Migration
     {
         Schema::create('schedules', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('id_class');
+            $table->integer('id_class')->references('id')->on('asignaturas');
             $table->dateTime('time_start');
             $table->dateTime('time_end');
             $table->date('day');
