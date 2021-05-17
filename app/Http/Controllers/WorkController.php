@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Work;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class WorkController
@@ -23,10 +25,27 @@ class WorkController extends Controller
 
     public function index()
     {
+        $id = Auth::user()->id;
+        $user = Auth::user()->tipo;
+        if($user == 1){
         $works = Work::paginate();
 
         return view('work.index', compact('works'))
             ->with('i', (request()->input('page', 1) - 1) * $works->perPage());
+        }
+        if($user == 3){
+            $works = DB::table('works')
+            ->join('asignaturas', function($join)
+            {
+                   $join->on('works.id_class', '=', 'asignaturas.id')
+                        ->where('asignaturas.id_teacher', '=', Auth::user()->id);
+               })
+               ->paginate();
+               return view('work.index', compact('works'))
+            ->with('i', (request()->input('page', 1) - 1) * $works->perPage());
+
+        }
+
     }
 
     /**
