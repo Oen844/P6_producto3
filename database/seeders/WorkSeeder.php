@@ -23,7 +23,7 @@ class WorkSeeder extends Seeder
         ]);
 
         $work2 = Work::create([
-            'id_class' => '2',
+            'id_class' => '3',
             'id_student' => '2',
             'name' => 'Trabajo de recuperación',
             'mark' => '5',
