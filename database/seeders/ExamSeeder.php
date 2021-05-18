@@ -22,7 +22,7 @@ class ExamSeeder extends Seeder
 
         ]);
         $Exam = Exam::create([
-            'id_class' => '2',
+            'id_class' => '3',
             'id_student' => '2',
             'name' => 'Suspendido',
             'mark' => '4',
