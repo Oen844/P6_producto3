@@ -42,6 +42,20 @@ class AsignaturaController extends Controller
             ->with('i', (request()->input('page', 1) - 1) * $asignaturas->perPage());
 
 
+         }if($user == 2){
+        //                     select asignaturas.*
+        //                     from asignaturas, enrollments
+        //                     where  asignaturas.id_course = enrollments.id_course and enrollments.id_student = 2;
+            $asignaturas = DB::table('asignaturas')
+                                ->join('enrollments', 'asignaturas.id_course', '=', 'enrollments.id_course')
+                                ->where('enrollments.id_student','=',Auth::user()->id)
+                                ->select('asignaturas.*')
+                                ->paginate();
+
+            return view('asignatura.index', compact('asignaturas'))
+            ->with('i', (request()->input('page', 1) - 1) * $asignaturas->perPage());
+
+
         }
 
 
@@ -55,8 +69,20 @@ class AsignaturaController extends Controller
      */
     public function create()
     {
-        $asignatura = new Asignatura();
+        $id = Auth::user()->id;
+        $user = Auth::user()->tipo;
+        if($user == 1){
+            $asignatura = new Asignatura();
         return view('asignatura.create', compact('asignatura'));
+        }if($user == 3){
+            $asignatura = new Asignatura();
+            return view('asignatura.create', compact('asignatura'));
+        }
+        if($user == 2){
+            return redirect()->route('asignaturas.index')
+            ->with('success', 'No puedes crear asignaturas.');
+        }
+
     }
 
     /**
@@ -68,11 +94,22 @@ class AsignaturaController extends Controller
     public function store(Request $request)
     {
         request()->validate(Asignatura::$rules);
-
+        $id = Auth::user()->id;
+        $user = Auth::user()->tipo;
+        if($user == 1){
         $asignatura = Asignatura::create($request->all());
 
         return redirect()->route('asignaturas.index')
             ->with('success', 'Asignatura created successfully.');
+        }if($user == 3){
+            $asignatura = Asignatura::create($request->all());
+
+        return redirect()->route('asignaturas.index')
+            ->with('success', 'Asignatura created successfully.');
+        }if($user == 2){
+            return redirect()->route('asignaturas.index')
+            ->with('success', 'No puedes crear asignaturas.');
+        }
     }
 
     /**
@@ -97,9 +134,17 @@ class AsignaturaController extends Controller
      */
     public function edit($id)
     {
+        $id = Auth::user()->id;
+        $user = Auth::user()->tipo;
+        if($user == 2){
+        return redirect()->route('asignaturas.index')
+        ->with('success', 'No puedes editar las asignaturas.');
+
+    }else{
         $asignatura = Asignatura::find($id);
 
         return view('asignatura.edit', compact('asignatura'));
+    }
     }
 
     /**
@@ -126,9 +171,17 @@ class AsignaturaController extends Controller
      */
     public function destroy($id)
     {
+        $id = Auth::user()->id;
+        $user = Auth::user()->tipo;
+        if($user == 2){
+        return redirect()->route('asignaturas.index')
+        ->with('success', 'No puedes editar las asignaturas.');
+
+    }else{
         $asignatura = Asignatura::find($id)->delete();
 
         return redirect()->route('asignaturas.index')
-            ->with('success', 'Asignatura deleted successfully');
+            ->with('success', 'No puedes eliminar asignaturas');
+    }
     }
 }
