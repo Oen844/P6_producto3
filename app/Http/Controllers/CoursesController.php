@@ -34,22 +34,7 @@ class CoursesController extends Controller
         }
         if($user == 2){
             $enrollments = Enrollment::where('id_student', '=', Auth::user()->id)->get();
-            // if (!isset($enrollments)){
-            //     return redirect()->route('asignaturas.index')->with('success', 'Ya tienes un curso asignado.');
-            // }else{
-            //     $courses = Courses::orderBy('id','desc')->paginate();
-            //     return view('courses.index', compact('courses'))->with('flash', 'Elige un curso, no estas en ningun curso');
-            // }
-            // if(!empty($enrollments->id)){
-            //     //return redirect()->route('asignaturas.index')->with('success', 'Ya tienes un curso asignado.');
-            //     return $enrollments;
-            // }else{
-            //     $courses = Courses::orderBy('id','desc')->paginate();
 
-            //     //return view('courses.index', compact('courses'))->with('flash', 'Elige un curso, no estas en ningun curso');
-            //     //return view('courses.index', compact('courses'));
-            //     return $enrollments;
-            // }
 
             if(sizeof($enrollments) == 0){
                 $courses = Courses::orderBy('id','desc')->paginate();
