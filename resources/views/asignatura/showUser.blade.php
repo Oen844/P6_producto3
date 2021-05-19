@@ -42,9 +42,26 @@
                             <strong>Color:</strong>
                             {{ $asignatura->color }}
                         </div>
-                       
+                        <div class="form-group">
+                            <strong>Examen:</strong>
+                            <strong>Name:</strong>
+                            {{$exam->name}}
+
+                            <br>
+                            <strong>Examen:</strong>
+                            <strong>Mark:</strong>
+                            {{ $exam->mark }}
+
+                        </div>
+
                     </div>
                 </div>
+
+
+
+
+
+
             </div>
         </div>
     </section>

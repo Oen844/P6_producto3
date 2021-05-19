@@ -42,15 +42,15 @@
                  @auth
                  <?php
                  if (Auth::user()->tipo != 2) { ?>
-                    <a class="navbar-brand" href="{{ url('/courses') }}">
+                    {{-- <a class="navbar-brand" href="{{ url('/courses') }}">
                         {{ config('Cursos', 'Cursos') }}
-                    </a>
+                    </a> --}}
                     <a class="navbar-brand" href="{{ url('/user') }}">
                         {{ config('Usuarios', 'Usuarios') }}
                     </a>
-                    <a class="navbar-brand" href="{{ url('/asignaturas') }}">
+                    {{-- <a class="navbar-brand" href="{{ url('/asignaturas') }}">
                         {{ config('Asignaturas', 'Asignaturas') }}
-                    </a>
+                    </a> --}}
                     <a class="navbar-brand" href="{{ url('/schedules') }}">
                         {{ config('Clases', 'Clases') }}
                     </a>
@@ -70,6 +70,13 @@
                 <?php
                }
                ?>
+                    <a class="navbar-brand" href="{{ url('/courses') }}">
+                        {{ config('Cursos', 'Cursos') }}
+                    </a>
+
+                     <a class="navbar-brand" href="{{ url('/asignaturas') }}">
+                        {{ config('Asignaturas', 'Asignaturas') }}
+                    </a>
                @endauth
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
