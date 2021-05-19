@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreCourses;
 use App\Models\Enrollment;
+use Psy\CodeCleaner\EmptyArrayDimFetchPass;
 
 
 class CoursesController extends Controller
@@ -33,14 +34,30 @@ class CoursesController extends Controller
         }
         if($user == 2){
             $enrollments = Enrollment::where('id_student', '=', Auth::user()->id)->get();
+            // if (!isset($enrollments)){
+            //     return redirect()->route('asignaturas.index')->with('success', 'Ya tienes un curso asignado.');
+            // }else{
+            //     $courses = Courses::orderBy('id','desc')->paginate();
+            //     return view('courses.index', compact('courses'))->with('flash', 'Elige un curso, no estas en ningun curso');
+            // }
+            // if(!empty($enrollments->id)){
+            //     //return redirect()->route('asignaturas.index')->with('success', 'Ya tienes un curso asignado.');
+            //     return $enrollments;
+            // }else{
+            //     $courses = Courses::orderBy('id','desc')->paginate();
 
-            if(!empty($enrollments)){
-                return redirect()->route('asignaturas.index')->with('success', 'Ya tienes un curso asignado.');
-            }else{
+            //     //return view('courses.index', compact('courses'))->with('flash', 'Elige un curso, no estas en ningun curso');
+            //     //return view('courses.index', compact('courses'));
+            //     return $enrollments;
+            // }
+
+            if(sizeof($enrollments) == 0){
                 $courses = Courses::orderBy('id','desc')->paginate();
 
-                //return view('courses.index', compact('courses'))->with('flash', 'Elige un curso, no estas en ningun curso');
-                return view('courses.index', compact('courses'));
+                return view('courses.index', compact('courses'))->with('flash', 'Elige un curso, no estas en ningun curso');
+            }else{
+                return redirect()->route('asignaturas.index')->with('success', 'Ya tienes un curso asignado.');
+
             }
         }
     }
@@ -78,9 +95,22 @@ class CoursesController extends Controller
 
      public function show(Courses $course){
 
+        $id = Auth::user()->id;
+        $user = Auth::user()->tipo;
+        if($user == 1){
+            return view('courses.show',['course' => $course]);
+        }
+        if($user == 2){
+            $enrollment1 = Enrollment::create([
+                'id_student' => $id,
+                'id_course' => $course->id,
+                'status' => '1',
+
+            ]);
+            return redirect()->route('asignaturas.index')->with('success', 'Ya tienes un curso asignado '.$course->name);
+        }
 
 
-        return view('courses.show',['course' => $course]);
     }
 
 
