@@ -27,27 +27,26 @@ class ExamController extends Controller
     {
         $id = Auth::user()->id;
         $user = Auth::user()->tipo;
-        if($user == 1){
-        $exams = Exam::paginate();
+        if ($user == 1) {
+            $exams = Exam::paginate();
 
-        return view('exam.index', compact('exams'))
-            ->with('i', (request()->input('page', 1) - 1) * $exams->perPage());
-        }if($user == 3){
+            return view('exam.index', compact('exams'))
+                ->with('i', (request()->input('page', 1) - 1) * $exams->perPage());
+        }
+        if ($user == 3) {
             // SELECT exams.*
             // FROM exams, asignaturas
             // where asignaturas.id = exams.id_class and asignaturas.id_teacher = '1';
 
             $exams = DB::table('exams')
-            ->join('asignaturas', function($join)
-            {
-                   $join->on('exams.id_class', '=', 'asignaturas.id')
+                ->join('asignaturas', function ($join) {
+                    $join->on('exams.id_class', '=', 'asignaturas.id')
                         ->where('asignaturas.id_teacher', '=', Auth::user()->id);
-               })
-               ->paginate();
-               return view('exam.index', compact('exams'))
-            ->with('i', (request()->input('page', 1) - 1) * $exams->perPage());
+                })
+                ->paginate();
+            return view('exam.index', compact('exams'))
+                ->with('i', (request()->input('page', 1) - 1) * $exams->perPage());
         }
-
     }
 
     /**

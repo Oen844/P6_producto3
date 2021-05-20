@@ -7,7 +7,7 @@
 
 
 
-    <form action="{{route('courses.update', $user)}}" method="post">
+    <form action="{{route('user.update', $user)}}" method="post">
 
         @csrf
         @method('put')
@@ -28,7 +28,7 @@
             <input type="text" name="email" value="{{old('description', $user->email)}}">
 
         </label>
-        @error('description')
+        @error('email')
         <br>
         <small>*{{$message}}</small>
         <br>
@@ -41,12 +41,24 @@
             <input type="text" name="tipo" value="{{old('active', $user->tipo)}}">
 
         </label>
-        @error('active')
+        @error('tipo')
         <br>
         <small>*{{$message}}</small>
         <br>
 
     @enderror
+    <br>
+    <label>
+        Contraseña: <br>
+        <input type="password" name="password" value="{{old('active')}}">
+
+    </label>
+    @error('password')
+    <br>
+    <small>*{{$message}}</small>
+    <br>
+
+@enderror
 
 
         <br>
