@@ -124,7 +124,7 @@ class CoursesController extends Controller
     public function destroy(Courses $course){
         $course->delete();
 
-        return redirect()->route('courses.index');
+        return redirect()->route('courses.index')->with('flash', 'Has eliminado el curso '.$course->name);
 
     }
 
