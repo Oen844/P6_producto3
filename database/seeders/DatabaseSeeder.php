@@ -18,5 +18,9 @@ class DatabaseSeeder extends Seeder
         $this->call(CoursesSeeder::class);
         $this->call(SchedulesSeeder::class);
         $this->call(AsignaturasSeeder::class);
+        $this->call(WorkSeeder::class);
+        $this->call(ExamSeeder::class);
+        $this->call(EnrollmentSeeder::class);
+
     }
 }

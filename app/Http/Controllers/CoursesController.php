@@ -4,8 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Courses;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\Http\Requests\StoreCourses;
+use App\Models\Enrollment;
+use Psy\CodeCleaner\EmptyArrayDimFetchPass;
+
 
 class CoursesController extends Controller
 {
@@ -19,10 +23,28 @@ class CoursesController extends Controller
         $this->middleware('auth');
     }
 
-    public function index()
-    {
-        $courses = Courses::orderBy('id', 'desc')->paginate();
+    public function index(){
+
+        //return back()->with('flash', 'Curso bonito');
+        $id = Auth::user()->id;
+        $user = Auth::user()->tipo;
+        if($user == 1){
+            $courses = Courses::orderBy('id','desc')->paginate();
         return view('courses.index', compact('courses'));
+        }
+        if($user == 2){
+            $enrollments = Enrollment::where('id_student', '=', Auth::user()->id)->get();
+
+
+            if(sizeof($enrollments) == 0){
+                $courses = Courses::orderBy('id','desc')->paginate();
+
+                return view('courses.index', compact('courses'))->with('flash', 'Elige un curso, no estas en ningun curso');
+            }else{
+                return redirect()->route('asignaturas.index')->with('success', 'Ya tienes un curso asignado.');
+
+            }
+        }
     }
 
     public function create()
@@ -51,9 +73,34 @@ class CoursesController extends Controller
         return redirect()->route('courses.show', $course);
     }
 
-    public function show(Courses $course)
-    {
-        return view('courses.show', ['course' => $course]);
+         $course->save();
+
+
+
+
+         return redirect()->route('courses.show',$course);
+
+
+     }
+
+     public function show(Courses $course){
+
+        $id = Auth::user()->id;
+        $user = Auth::user()->tipo;
+        if($user == 1){
+            return view('courses.show',['course' => $course]);
+        }
+        if($user == 2){
+            $enrollment1 = Enrollment::create([
+                'id_student' => $id,
+                'id_course' => $course->id,
+                'status' => '1',
+
+            ]);
+            return redirect()->route('asignaturas.index')->with('success', 'Ya tienes un curso asignado '.$course->name);
+        }
+
+
     }
 
 
