@@ -20,12 +20,12 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Exam extends Model
 {
-    
+
     static $rules = [
-		'id_class' => 'required',
-		'id_student' => 'required',
-		'name' => 'required',
-		'mark' => 'required',
+        'id_class' => 'required',
+        'id_student' => 'required',
+        'name' => 'required',
+        'mark' => 'required',
     ];
 
     protected $perPage = 20;
@@ -35,8 +35,5 @@ class Exam extends Model
      *
      * @var array
      */
-    protected $fillable = ['id_class','id_student','name','mark'];
-
-
-
+    protected $fillable = ['id_class', 'id_student', 'name', 'mark'];
 }
