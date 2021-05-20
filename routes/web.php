@@ -33,8 +33,8 @@ Route::get('messages/{id}', [App\Http\Controllers\MensajeController::class, 'sho
 
 //Controlador de notificaciones
 Route::get('notifications', [App\Http\Controllers\NotificationsCoontroller::class, 'index'])->name('notifications.index');
-Route::patch('notifications/{id}', [App\Http\Controllers\NotificationsCoontroller::class, 'read'])->name('notifications.read');
-Route::delete('notifications/{id}', [App\Http\Controllers\NotificationsCoontroller::class, 'destroy'])->name('notifications.destroy');
+Route::patch('notifications/{id}', [App\Http\Controllers\NotificationsCoontroller::class, 'read'] )->name('notifications.read');
+Route::delete('notifications/{id}', [App\Http\Controllers\NotificationsCoontroller::class, 'destroy'] )->name('notifications.destroy');
 
 //controlador de todo lo referente a cursos
 Route::resource('courses', CoursesController::class);
@@ -60,5 +60,5 @@ Route::resource('enrollment', App\Http\Controllers\EnrollmentController::class);
 //controlador de percentage
 Route::resource('percentage', App\Http\Controllers\PercentageController::class);
 
-//Controlador de Calendar
-Route::resource('calendar', App\Http\Controllers\CalendarController::class);
+
+
