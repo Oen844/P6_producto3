@@ -42,6 +42,12 @@
                             <strong>Color:</strong>
                             {{ $asignatura->color }}
                         </div>
+                        <?php
+                        if(!$exam){ ?>
+                        <div class="form-group">
+                            <strong>Name:</strong>
+                            <strong>No hay examenes:</strong>
+                            <?php } else { ?>
                         <div class="form-group">
                             <strong>Examen:</strong>
                             <strong>Name:</strong>
@@ -52,8 +58,8 @@
                             <strong>Mark:</strong>
                             {{ $exam->mark }}
 
-                        </div>
-
+                              </div>
+                              <?php }  ?>
                     </div>
                 </div>
 
