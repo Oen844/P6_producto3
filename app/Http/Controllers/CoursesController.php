@@ -44,6 +44,8 @@ class CoursesController extends Controller
                 return redirect()->route('asignaturas.index')->with('success', 'Ya tienes un curso asignado.');
 
             }
+        }if($user == 3){
+            return redirect()->route('asignaturas.index')->with('success', 'No puedes gestionar los cursos, solo asignaturas y sus derivadas.');
         }
     }
 
@@ -123,6 +125,9 @@ class CoursesController extends Controller
     public function destroy(Courses $course)
     {
         $course->delete();
-        return redirect()->route('courses.index');
+ NewVistadeUser
+
+        return redirect()->route('courses.index')->with('flash', 'Has eliminado el curso '.$course->name);
+
     }
 }
