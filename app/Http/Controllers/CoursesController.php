@@ -44,6 +44,8 @@ class CoursesController extends Controller
                 return redirect()->route('asignaturas.index')->with('success', 'Ya tienes un curso asignado.');
 
             }
+        }if($user == 3){
+            return redirect()->route('asignaturas.index')->with('success', 'No puedes gestionar los cursos, solo asignaturas y sus derivadas.');
         }
     }
 
