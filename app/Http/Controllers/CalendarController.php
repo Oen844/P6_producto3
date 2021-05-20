@@ -36,7 +36,7 @@ class CalendarController extends Controller
             ->join('schedules', 'asignaturas.id_teacher', '=', 'schedules.id_class')
             ->join('users', 'asignaturas.id', '=', 'users.id')
             ->where('enrollments.id_student','=',Auth::user()->id)
-            ->select('asignaturas.name', 'schedules.time_start', 'schedules.time_end', 'users.name' )
+            ->select('asignaturas.name', 'schedules.time_start', 'schedules.time_end', 'users.name', 'asignaturas.color' )
             ->get();
 
 
