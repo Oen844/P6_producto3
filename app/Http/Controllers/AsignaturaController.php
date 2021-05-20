@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Asignatura;
+use App\Models\Enrollment;
+use App\Models\Exam;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -120,10 +122,35 @@ class AsignaturaController extends Controller
      */
     public function show($id)
     {
-
+        $idu = Auth::user()->id;
+        $user = Auth::user()->tipo;
+        if($user == 1){
         $asignatura = Asignatura::find($id);
 
         return view('asignatura.show', compact('asignatura'));
+        }if($user == 3){
+            $asignatura = Asignatura::find($id);
+
+            return view('asignatura.show', compact('asignatura'));
+        }
+        if($user == 2){
+              $asignatura = Asignatura::find($id);
+             //$exams = Exam::where('id_class', '=', $id);
+            $exam = DB::table('exams')
+                    ->where('exams.id_student', '=', Auth::user()->id)
+                    ->where('exams.id_class','=', $id)
+                    ->select('exams.name', 'exams.mark')
+                    ->first();
+            //  $asignatura = DB::table('asignaturas')
+            //             ->join('exams', 'asignaturas.id', '=', 'exams.id_class')
+            //             ->where('asignaturas.id','=',$id)
+            //             ->where('exams.id_student','=',Auth::user()->id)
+            //             ->select('asignaturas.*', 'exams.mark')
+            //             ->paginate();
+
+            return view('asignatura.showUser', compact('asignatura'), ['exam' => $exam]);
+            //return  $asignatura;
+        }
     }
 
     /**
