@@ -12,11 +12,11 @@ use Illuminate\Support\Facades\DB;
  * @package App\Http\Controllers
  */
 
-//id_class es id de asignatura
+ //id_class es id de asignatura
 class ScheduleController extends Controller
 {
 
-    /**
+      /**
      * Create a new controller instance.
      *
      * @return void
@@ -34,26 +34,28 @@ class ScheduleController extends Controller
     {
         $id = Auth::user()->id;
         $user = Auth::user()->tipo;
-        if ($user == 1) {
+        if($user == 1){
             $schedules = Schedule::paginate();
 
             return view('schedule.index', compact('schedules'))
-                ->with('i', (request()->input('page', 1) - 1) * $schedules->perPage());
-        }
-        if ($user == 3) {
+           ->with('i', (request()->input('page', 1) - 1) * $schedules->perPage());
+        }if($user == 3){
 
 
             // $schedules= DB::SELECT('SELECT  schedules.* from schedules, asignaturas where asignaturas.id = schedules.id_class and asignaturas.id_teacher = $id ;');
             $schedules = DB::table('schedules')
-                ->join('asignaturas', function ($join) {
-                    $join->on('schedules.id_class', '=', 'asignaturas.id')
-                        ->where('asignaturas.id_teacher', '=', Auth::user()->id);
-                })
-                ->paginate();
+                 ->join('asignaturas', function($join)
+                 {
+                        $join->on('schedules.id_class', '=', 'asignaturas.id')
+                             ->where('asignaturas.id_teacher', '=', Auth::user()->id);
+                    })
+                    ->paginate();
 
-            return view('schedule.index', compact('schedules'))
-                ->with('i', (request()->input('page', 1) - 1) * $schedules->perPage());
+                    return view('schedule.index', compact('schedules'))
+                    ->with('i', (request()->input('page', 1) - 1) * $schedules->perPage());
         }
+
+        
     }
 
     /**

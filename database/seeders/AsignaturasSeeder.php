@@ -23,12 +23,20 @@ class AsignaturasSeeder extends Seeder
             ]);
 
             $Asignatura2=Asignatura::create([
-                'id_teacher' => 2,
+                'id_teacher' => 3,
                 'id_course' => 2,
                 'id_shedule' => 2,
                 'name' => 'Programacion',
                 'color' => 'verde',
                 ]);
+
+                $Asignatura3=Asignatura::create([
+                    'id_teacher' => 3,
+                    'id_course' => 1,
+                    'id_shedule' => 2,
+                    'name' => 'Manualidades',
+                    'color' => 'verde',
+                    ]);
 
     }
 }
