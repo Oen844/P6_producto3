@@ -27,25 +27,23 @@ class WorkController extends Controller
     {
         $id = Auth::user()->id;
         $user = Auth::user()->tipo;
-        if($user == 1){
-        $works = Work::paginate();
+        if ($user == 1) {
+            $works = Work::paginate();
 
-        return view('work.index', compact('works'))
-            ->with('i', (request()->input('page', 1) - 1) * $works->perPage());
+            return view('work.index', compact('works'))
+                ->with('i', (request()->input('page', 1) - 1) * $works->perPage());
         }
-        if($user == 3){
+        if ($user == 3) {
             $works = DB::table('works')
-            ->join('asignaturas', function($join)
-            {
-                   $join->on('works.id_class', '=', 'asignaturas.id')
+                ->join('asignaturas', function ($join) {
+                    $join->on('works.id_class', '=', 'asignaturas.id')
                         ->where('asignaturas.id_teacher', '=', Auth::user()->id);
-               })
-               ->paginate();
-               return view('work.index', compact('works'))
-            ->with('i', (request()->input('page', 1) - 1) * $works->perPage());
-
+                }
+                )
+                ->paginate();
+            return view('work.index', compact('works'))
+                ->with('i', (request()->input('page', 1) - 1) * $works->perPage());
         }
-
     }
 
     /**
