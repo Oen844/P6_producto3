@@ -15,3 +15,5 @@ yarn-error.log
 basckisback2.code-workspace
 
 *.code-workspace
+
+tailwind.config.js
