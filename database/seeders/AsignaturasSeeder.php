@@ -38,5 +38,13 @@ class AsignaturasSeeder extends Seeder
                     'color' => 'verde',
                     ]);
 
+                    $Asignatura4=Asignatura::create([
+                        'id_teacher' => 3,
+                        'id_course' => 1,
+                        'id_shedule' => 3,
+                        'name' => 'Plastica',
+                        'color' => 'verde',
+                        ]);
+
     }
 }

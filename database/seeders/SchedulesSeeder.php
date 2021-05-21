@@ -45,6 +45,37 @@ class SchedulesSeeder extends Seeder
 		'day' => '2021-04-26',
 
        ]);
+       $Schedule5=Schedule::create([
+        'id_class' => '3',
+		'time_start' => '2021-04-29 23:46:00',
+		'time_end' => '2021-04-29 23:56:00',
+		'day' => '2021-04-29',
+
+       ]);
+
+       $Schedule6=Schedule::create([
+        'id_class' => '3',
+		'time_start' => '2021-04-10 23:46:00',
+		'time_end' => '2021-04-10 23:56:00',
+		'day' => '2021-04-10',
+
+       ]);
+
+       $Schedule7=Schedule::create([
+        'id_class' => '1',
+		'time_start' => '2021-04-12 23:46:00',
+		'time_end' => '2021-04-12 23:56:00',
+		'day' => '2021-04-12',
+
+       ]);
+
+       $Schedule8=Schedule::create([
+        'id_class' => '1',
+		'time_start' => '2021-04-2 23:46:00',
+		'time_end' => '2021-04-2 23:56:00',
+		'day' => '2021-04-12',
+
+       ]);
 
     }
 }
