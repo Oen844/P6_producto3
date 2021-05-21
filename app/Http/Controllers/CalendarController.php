@@ -33,7 +33,14 @@ class CalendarController extends Controller
                 ->select('asignaturas.name as className', 'asignaturas.name', 'schedules.time_start', 'schedules.time_end', 'users.name as teacher', 'asignaturas.color')
                 ->get();
 
-            return view('calendar.index', compact('calendarSchedules'));
+        } else {
+            $calendarSchedules = DB::table('asignaturas')
+            ->join('schedules', 'schedules.id_class', '=', 'asignaturas.id')
+            ->join('users', 'asignaturas.id', '=', 'users.id')
+            ->select('asignaturas.name as className', 'asignaturas.name', 'schedules.time_start', 'schedules.time_end', 'users.name as teacher', 'asignaturas.color')
+            ->get();
         }
+
+        return view('calendar.index', compact('calendarSchedules'));
     }
 }
