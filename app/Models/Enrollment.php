@@ -19,11 +19,11 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Enrollment extends Model
 {
-
+    
     static $rules = [
-        'id_student' => 'required',
-        'id_course' => 'required',
-        'status' => 'required',
+		'id_student' => 'required',
+		'id_course' => 'required',
+		'status' => 'required',
     ];
 
     protected $perPage = 20;
@@ -33,5 +33,8 @@ class Enrollment extends Model
      *
      * @var array
      */
-    protected $fillable = ['id_student', 'id_course', 'status'];
+    protected $fillable = ['id_student','id_course','status'];
+
+
+
 }
