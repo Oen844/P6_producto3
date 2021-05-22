@@ -21,13 +21,13 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Asignatura extends Model
 {
-
+    
     static $rules = [
-        'id_teacher' => 'required',
-        'id_course' => 'required',
-        'id_shedule' => 'required',
-        'name' => 'required',
-        'color' => 'required',
+		'id_teacher' => 'required',
+		'id_course' => 'required',
+		'id_shedule' => 'required',
+		'name' => 'required',
+		'color' => 'required',
     ];
 
     protected $perPage = 20;
@@ -37,5 +37,8 @@ class Asignatura extends Model
      *
      * @var array
      */
-    protected $fillable = ['id_teacher', 'id_course', 'id_shedule', 'name', 'color'];
+    protected $fillable = ['id_teacher','id_course','id_shedule','name','color'];
+
+
+
 }
