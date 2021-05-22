@@ -13,7 +13,7 @@ use Psy\CodeCleaner\EmptyArrayDimFetchPass;
 
 class CoursesController extends Controller
 {
-      /**
+    /**
      * Create a new controller instance.
      *
      * @return void
@@ -44,29 +44,36 @@ class CoursesController extends Controller
                 return redirect()->route('asignaturas.index')->with('success', 'Ya tienes un curso asignado.');
 
             }
+        }if($user == 3){
+            return redirect()->route('asignaturas.index')->with('success', 'No puedes gestionar los cursos, solo asignaturas y sus derivadas.');
         }
     }
 
-    public function create(){
+    public function create()
+    {
         return view('courses.create');
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $course = new Courses();
 
         $request->validate([
-            'name'=>'required|max:50',
-            'description'=>'required|max:255',
-            'date_start'=>'required',
-            'date_end'=>'required',
-            'active'=>'required|max:1'
+            'name' => 'required|max:50',
+            'description' => 'required|max:255',
+            'date_start' => 'required',
+            'date_end' => 'required',
+            'active' => 'required|max:1'
         ]);
 
-        $course ->name = $request->name;
-        $course ->description = $request->description;
-        $course ->date_start = $request->date_start;
-        $course ->date_end = $request->date_end;
-        $course ->active = $request->active;
+        $course->name = $request->name;
+        $course->description = $request->description;
+        $course->date_start = $request->date_start;
+        $course->date_end = $request->date_end;
+        $course->active = $request->active;
+        $course->save();
+        return redirect()->route('courses.show', $course);
+    }
 
          $course->save();
 
@@ -99,31 +106,28 @@ class CoursesController extends Controller
     }
 
 
-    public function edit(Courses $course){
-        return view('courses.edit',compact('course'));
+    public function edit(Courses $course)
+    {
+        return view('courses.edit', compact('course'));
     }
 
-    public function update(Request $request, Courses $course){
-
-
-        $course ->name = $request->name;
-        $course ->description = $request->description;
-        $course ->date_start = $request->date_start;
-        $course ->date_end = $request->date_end;
-        $course ->active = $request->active;
-
-
-         $course->save();
-
-         return redirect()->route('courses.show',$course);
-
+    public function update(Request $request, Courses $course)
+    {
+        $course->name = $request->name;
+        $course->description = $request->description;
+        $course->date_start = $request->date_start;
+        $course->date_end = $request->date_end;
+        $course->active = $request->active;
+        $course->save();
+        return redirect()->route('courses.show', $course);
     }
 
-    public function destroy(Courses $course){
+    public function destroy(Courses $course)
+    {
         $course->delete();
+ NewVistadeUser
 
-        return redirect()->route('courses.index');
+        return redirect()->route('courses.index')->with('flash', 'Has eliminado el curso '.$course->name);
 
     }
-
 }

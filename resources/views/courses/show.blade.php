@@ -10,7 +10,7 @@
     <a href="{{route('courses.edit',$course)}}">Editar curso</a>
 
     <p><strong>Categoria: </strong>{{$course->name}}</p>
-    <p><Strong>Descripcion:  </Strong>{{$course->description}}</p>
+    <p><Strong>Descripcion: </Strong>{{$course->description}}</p>
     <p><Strong>Fecha de Inicio: </Strong>{{$course->date_start}}</p>
     <p><Strong>Fecha de Fin: </Strong>{{$course->date_end}}</p>
     <p><Strong>Activo: </Strong>{{$course->active}}</p>

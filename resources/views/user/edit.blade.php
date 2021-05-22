@@ -62,7 +62,7 @@
 
 
         <br>
-        <button type="submit">Actualizar uasuario</button>
+        <button type="submit">Actualizar Usuario</button>
 
     </form>
 
