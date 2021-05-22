@@ -8,13 +8,14 @@ use App\Models\Exam;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+
 /**
  * Class AsignaturaController
  * @package App\Http\Controllers
  */
 class AsignaturaController extends Controller
 {
-      /**
+    /**
      * Create a new controller instance.
      *
      * @return void
@@ -23,6 +24,7 @@ class AsignaturaController extends Controller
     {
         $this->middleware('auth');
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -32,14 +34,14 @@ class AsignaturaController extends Controller
     {
         $id = Auth::user()->id;
         $user = Auth::user()->tipo;
-        if($user == 1){
+        if ($user == 1) {
             $asignaturas = Asignatura::paginate();
             return view('asignatura.index', compact('asignaturas'))
-            ->with('i', (request()->input('page', 1) - 1) * $asignaturas->perPage());
+                ->with('i', (request()->input('page', 1) - 1) * $asignaturas->perPage());
         }
-        if($user == 3){
+        if ($user == 3) {
             //los profesores ven solo sus asingnaturas
-            $asignaturas = Asignatura::where('id_teacher','=',$id)->paginate();
+            $asignaturas = Asignatura::where('id_teacher', '=', $id)->paginate();
             return view('asignatura.index', compact('asignaturas'))
             ->with('i', (request()->input('page', 1) - 1) * $asignaturas->perPage());
 
@@ -59,9 +61,6 @@ class AsignaturaController extends Controller
 
 
         }
-
-
-
     }
 
     /**

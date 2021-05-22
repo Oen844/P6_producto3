@@ -21,12 +21,12 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Percentage extends Model
 {
-    
+
     static $rules = [
-		'id_course' => 'required',
-		'id_class' => 'required',
-		'continuous_assessment' => 'required',
-		'exams' => 'required',
+        'id_course' => 'required',
+        'id_class' => 'required',
+        'continuous_assessment' => 'required',
+        'exams' => 'required',
     ];
 
     protected $perPage = 20;
@@ -36,8 +36,5 @@ class Percentage extends Model
      *
      * @var array
      */
-    protected $fillable = ['id_course','id_class','continuous_assessment','exams'];
-
-
-
+    protected $fillable = ['id_course', 'id_class', 'continuous_assessment', 'exams'];
 }
