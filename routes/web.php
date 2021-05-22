@@ -60,5 +60,5 @@ Route::resource('enrollment', App\Http\Controllers\EnrollmentController::class);
 //controlador de percentage
 Route::resource('percentage', App\Http\Controllers\PercentageController::class);
 
-//Controlador de Calendar
+//controlador de percentage
 Route::resource('calendar', App\Http\Controllers\CalendarController::class);

@@ -20,12 +20,12 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Schedule extends Model
 {
-
+    
     static $rules = [
-        'id_class' => 'required',
-        'time_start' => 'required',
-        'time_end' => 'required',
-        'day' => 'required',
+		'id_class' => 'required',
+		'time_start' => 'required',
+		'time_end' => 'required',
+		'day' => 'required',
     ];
 
     protected $perPage = 20;
@@ -35,5 +35,8 @@ class Schedule extends Model
      *
      * @var array
      */
-    protected $fillable = ['id_class', 'time_start', 'time_end', 'day'];
+    protected $fillable = ['id_class','time_start','time_end','day'];
+
+
+
 }
