@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Class Percentage
  *
+ *
  * @property $id
  * @property $id_course
  * @property $id_class
