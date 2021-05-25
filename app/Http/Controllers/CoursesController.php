@@ -48,7 +48,15 @@ class CoursesController extends Controller
     }
 
     public function create(){
-        return view('courses.create');
+        $user = Auth::user()->tipo;
+        if($user == 2){
+            return redirect()->route('courses.index');
+        }
+        else{
+            return view('courses.create');
+        }
+
+
     }
 
     public function store(Request $request){
